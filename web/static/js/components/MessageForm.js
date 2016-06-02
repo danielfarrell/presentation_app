@@ -22,7 +22,7 @@ export default class MessageForm extends React.Component {
           <textarea
             ref="chatInput"
             onKeyPress={::this.handleTyping}
-            placeholder="Join the conversation"
+            placeholder="Enter message and hit enter to send"
             aria-label="Chat message"
             className="input-contrast comment-form-textarea"
           ></textarea>

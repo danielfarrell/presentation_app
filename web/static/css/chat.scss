@@ -9,8 +9,19 @@
   border-top: solid 1px black;
   border-right: solid 1px black;
 
+  .nav .nav li a {
+    height: 44px;
+  }
+
+  svg {
+    padding-top: 4px;
+    path {
+      fill: #337ab7;
+    }
+  }
+
   &.minimized {
-    height: 40px;
+    height: 44px;
     width: 250px;
   }
 
@@ -31,6 +42,7 @@
   }
 
   textarea {
+    margin-left: 2px;
     width: 244px;
   }
 
