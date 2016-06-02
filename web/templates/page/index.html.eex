@@ -1,0 +1,86 @@
+<div class="reveal">
+  <div class="slides">
+    <section>
+      <h1>Drinking from another cup</h1>
+      <h2>Elixir for Rubyists</h2>
+    </section>
+    <section>
+      <h2>Who am I?</h2>
+      <ul>
+        <li>Daniel Farrell</li>
+        <li>Web Development Lead</li>
+        <li><a target="_blank" href="http://mobelux.com/">Mobelux</a> (Product Team for Hire)</li>
+        <li><a target="_blank" href="https://github.com/danielfarrell">@danielfarrell</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Elixir Guy</h2>
+      <ul>
+        <li>CVReg(now RefactorRVA)</li>
+        <li>Arlington Ruby</li>
+        <li>757rb</li>
+        <li>Triangle Ruby</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Why Elixir Matters</h2>
+      <ol>
+        <li id="em-1" class="fragment fade-up">Erlang/Beam is amazing technology</li>
+        <li id="em-2" class="fragment fade-up">Functional programming back in vogue</li>
+        <li id="em-3" class="fragment fade-up">Distributed/Scalable/Fault tolerant Systems</li>
+        <li id="em-4" class="fragment fade-up">The web is becoming like telecom</li>
+      </ol>
+    </section>
+    <section>
+      <section>
+        <h2>Current State of Elixir</h2>
+        <h3>
+          <%= tag(:img, src: static_path(@conn, "/images/rc-all-the-things.jpg"), alt: "RC ALL THE THINGS") %>
+        </h3>
+      </section>
+      <section>
+        <h2>Current State of Elixir</h2>
+        <ul>
+          <li>Elixir 1.3rc</li>
+          <li>Ecto 2.0rc</li>
+          <li>Phoenix 1.2rc</li>
+        </ul>
+      </section>
+    </section>
+    <section>
+      <h3>Elixir</h3>
+      <p>Stable and wonderful</p>
+      <p>Video link: José speaking at Elixirconf.eu: https://youtu.be/A60nxws_iVs</p>
+      <p>Video link2: Saša speaking at Elixirconf.eu: https://youtu.be/y_b6RTes83c</p>
+    </section>
+    <section>
+      <h3>Phoenix</h3>
+      <p>Presence</p>
+      <p>Video Link: Chris speaking at Elixirconf.eu: https://youtu.be/n338leKvqnA</p>
+    </section>
+    <section>
+      <h3>Ecto</h3>
+      <p>Data transformation tool</p>
+      <p>Video link: Michał speaking at Elixirconf.eu: https://youtu.be/msdYuidWYQA</p>
+    </section>
+    <section>
+      <h3>Nerves</h3>
+      <p>Easier</p>
+      <p>Video link: Justin speaking at Elixirconf.eu: https://youtu.be/118-g0ODfgg</p>
+    </section>
+    <section>
+      <h1>CODE</h1>
+    </section>
+    <section>
+      <h3>What Now?</h3>
+      <ol>
+        <li>Books!</li>
+        <li>Videos!</li>
+        <li>Stickers!</li>
+      </ol>
+    </section>
+  </div>
+</div>
+
+<div id="chat">
+</div>

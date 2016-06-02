@@ -1,0 +1,71 @@
+.chat {
+  position: absolute;
+  background: white;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  height: 500px;
+  z-index: 1000;
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+
+  &.minimized {
+    height: 40px;
+    width: 250px;
+  }
+
+  ol.messages {
+    height: 400px;
+    overflow: auto;
+    list-style-type: none;
+    padding: 4px;
+    min-height: 100px;
+    background: #fff;
+  }
+
+  ol.users {
+    height: 400px;
+    overflow: auto;
+    list-style-type: none;
+    padding: 4px;
+  }
+
+  textarea {
+    width: 244px;
+  }
+
+  .login {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    height: 100px;
+    background: white;
+
+    form {
+      width: 260px;
+      margin: 10px auto;
+    }
+    input {
+      width: 200px;
+    }
+  }
+
+  .message {
+    padding: 4px 0;
+    border-bottom: dashed 1px #aaa;
+    .message__meta {
+      position: relative;
+      .message__user {
+
+      }
+      .message__timestamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #aaa;
+      }
+    }
+  }
+}
