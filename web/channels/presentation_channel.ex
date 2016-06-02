@@ -22,8 +22,9 @@ defmodule PresentationApp.PresentationChannel do
   # It is also common to receive messages from the client and
   # broadcast to everyone in the current topic (chat:lobby).
   def handle_in("shout", payload, socket) do
-    MessageServer.put_message(Map.put(payload, :timestamp, :os.system_time(:milli_seconds)))
-    broadcast socket, "shout", payload
+    msg = Map.put(payload, :timestamp, :os.system_time(:milli_seconds))
+    MessageServer.put_message(msg)
+    broadcast socket, "shout", msg
     {:noreply, socket}
   end
 
