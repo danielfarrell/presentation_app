@@ -1,11 +1,16 @@
 <div class="reveal">
   <div class="slides">
     <section>
-      <h1>Drinking from another cup</h1>
-      <h2>Elixir for Rubyists</h2>
+      <h2>Drinking from another cup</h2>
+      <h3>Elixir/Phoenix for Rubyists</h3>
+      <p class="noframe">
+        <%= tag(:img, src: static_path(@conn, "/images/elixir-icon.png"), alt: "Elixir", height: 250, width: 250) %>
+        <%= tag(:img, src: static_path(@conn, "/images/phoenix-icon.png"), alt: "Phoenix", height: 250, width: 250) %>
+      </p>
     </section>
     <section>
       <h2>Who am I?</h2>
+      <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/mobelux-mark.png"), alt: "Mobelux") %></p>
       <ul>
         <li>Daniel Farrell</li>
         <li>Web Development Lead</li>
@@ -14,7 +19,8 @@
       </ul>
     </section>
     <section>
-      <h2>Elixir Guy</h2>
+      <h2>“That Elixir Guy”</h2>
+      <p>Spoke about Elixir at:</p>
       <ul>
         <li>CVReg(now RefactorRVA)</li>
         <li>Arlington Ruby</li>
@@ -25,10 +31,11 @@
     <section>
       <h2>Why Elixir Matters</h2>
       <ol>
-        <li id="em-1" class="fragment fade-up">Erlang/Beam is amazing technology</li>
-        <li id="em-2" class="fragment fade-up">Functional programming back in vogue</li>
-        <li id="em-3" class="fragment fade-up">Distributed/Scalable/Fault tolerant Systems</li>
-        <li id="em-4" class="fragment fade-up">The web is becoming like telecom</li>
+        <li class="fragment fade-up">Erlang/Beam is amazing technology</li>
+        <li class="fragment fade-up">Functional programming in vogue</li>
+        <li class="fragment fade-up">Distributed/Scalable/Fault tolerant</li>
+        <li class="fragment fade-up">The web is becoming like telecom</li>
+        <li class="fragment fade-up">We are all spoiled from Ruby</li>
       </ol>
     </section>
     <section>
@@ -41,43 +48,127 @@
       <section>
         <h2>Current State of Elixir</h2>
         <ul>
-          <li>Elixir 1.3rc</li>
-          <li>Ecto 2.0rc</li>
-          <li>Phoenix 1.2rc</li>
+          <li>Elixir 1.3-rc.0</li>
+          <li>Phoenix 1.2.0-rc.1</li>
+          <li>Ecto 2.0-rc.5</li>
         </ul>
       </section>
     </section>
     <section>
       <h3>Elixir</h3>
+      <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/elixir-icon.png"), alt: "Elixir", height: 250, width: 250) %></p>
       <p>Stable and wonderful</p>
-      <p>Video link: José speaking at Elixirconf.eu: https://youtu.be/A60nxws_iVs</p>
-      <p>Video link2: Saša speaking at Elixirconf.eu: https://youtu.be/y_b6RTes83c</p>
+      <aside class="footnotes">
+        Video links:<br />
+        José speaking at Elixirconf.eu: <a href="https://youtu.be/A60nxws_iVs" target="_blank">https://youtu.be/A60nxws_iVs</a><br />
+        Saša speaking at Elixirconf.eu: <a href="https://youtu.be/y_b6RTes83c" target="_blank">https://youtu.be/y_b6RTes83c</a>
+      </aside>
     </section>
     <section>
       <h3>Phoenix</h3>
+      <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/phoenix-icon.png"), alt: "Phoenix", height: 250, width: 250) %></p>
       <p>Presence</p>
-      <p>Video Link: Chris speaking at Elixirconf.eu: https://youtu.be/n338leKvqnA</p>
+      <aside class="footnotes">
+        Video Link:<br />
+        Chris speaking at Elixirconf.eu: <a href="https://youtu.be/n338leKvqnA" target="_blank">https://youtu.be/n338leKvqnA</a>
+      </aside>
     </section>
     <section>
       <h3>Ecto</h3>
       <p>Data transformation tool</p>
-      <p>Video link: Michał speaking at Elixirconf.eu: https://youtu.be/msdYuidWYQA</p>
+      <p>Don't call it a "model"</p>
+      <aside class="footnotes">
+        Video link:<br />
+        Michał speaking at Elixirconf.eu: <a href="https://youtu.be/msdYuidWYQA" target="_blank">https://youtu.be/msdYuidWYQA</a>
+      </aside>
     </section>
     <section>
-      <h3>Nerves</h3>
-      <p>Easier</p>
-      <p>Video link: Justin speaking at Elixirconf.eu: https://youtu.be/118-g0ODfgg</p>
+      <section>
+        <h3>Other Cool Projects</h3>
+      </section>
+      <section>
+        <h3>Nerves</h3>
+        <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/nerves-icon.png"), alt: "Nerves", height: 250, width: 250) %></p>
+        <p>Embedded Dev Getting Ever Easier</p>
+        <p><a target="_blank" href="http://nerves-project.org/">nerves-project.org</a></p>
+        <aside class="footnotes">
+          Video link:<br />
+          Justin speaking at Elixirconf.eu: <a href="https://youtu.be/g0ODfgg" target="_blank">https://youtu.be/118-g0ODfgg</a>
+        </aside>
+      </section>
+      <section>
+        <h3>Ueberauth</h3>
+        <p>Inspired by Omniauth</p>
+        <p><a target="_blank" href="https://github.com/ueberauth/ueberauth/">gh:ueberauth/ueberauth</a></p>
+        <h3>Guardian</h3>
+        <p>JWT based authentication</p>
+        <p><a target="_blank" href="https://github.com/ueberauth/guardian/">gh:ueberauth/guardian</a></p>
+      </section>
+      <section>
+        <h3>Absinthe</h3>
+        <p>Wonderful GraphQL Engine</p>
+        <p><a target="_blank" href="http://absinthe-graphql.org/">absinthe-graphql.org</a></p>
+      </section>
+      <section>
+        <h3>Elixirscript</h3>
+        <p>Compile to Javascript</p>
+        <p><a target="_blank" href="https://github.com/bryanjos/elixirscript">gh:bryanjos/elixirscript</a></p>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h3>Tooling</h3>
+        <ul>
+          <li><a target="_blank" href="https://hex.pm/">hex</a> (package manager)</li>
+          <li>mix (gem/bundle/rake combined)</li>
+          <li>kiex (multiple versions)</li>
+          <li>exrm (release building)</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Editor support</h3>
+        <ul>
+          <li>Vim: vim-elixir</li>
+          <li>Emacs: Alchemist</li>
+          <li>Atom</li>
+          <li>TextMate/Jetbrains/Intellj/etc/etc</li>
+        </ul>
+      </section>
     </section>
     <section>
       <h1>CODE</h1>
     </section>
     <section>
+      <h3>The State of Elixir/Phoenix</h3>
+      <p>Next Release Cycle: Ready for prime time!</p>
+    </section>
+    <section>
       <h3>What Now?</h3>
-      <ol>
-        <li>Books!</li>
-        <li>Videos!</li>
-        <li>Stickers!</li>
-      </ol>
+      <ul>
+        <li class="fragment fade-up">
+          Books!
+          <ol>
+            <li>PragProg: Programming Elixir</li>
+            <li>PragProg: Programming Phoenix</li>
+            <li>Manning: Elixir in Action</li>
+          </ol>
+        </li>
+        <li class="fragment fade-up">
+          Online Resources:
+          <ol>
+            <li><a target="_blank" href="https://github.com/h4cc/awesome-elixir">Awesome Elixir</a></li>
+            <li><a target="_blank" href="http://elixirforum.com/">elixirforum.com</a></li>
+            <li><a target="_blank" href="https://soundcloud.com/elixirfountain">Elixir Fountain Podcast</a></li>
+            <li><a target="_blank" href="http://elixirsips.com/">Elixir Sips</a></li>
+          </ol>
+        <li class="fragment fade-up">Videos!
+          <ol><li>Everything from Elixirconf EU</li></ol>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h3>Thank You</h3>
+      <h4>Stickers!</h4>
     </section>
   </div>
 </div>
