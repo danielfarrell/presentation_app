@@ -14,12 +14,16 @@ const store = configureStore();
 
 const chatDOM = document.getElementById('chat');
 
-render(
-  <Provider store={store}>
-    <Chat />
-  </Provider>,
-  chatDOM
-);
+if (chatDOM) {
+  render(
+    <Provider store={store}>
+      <Chat />
+    </Provider>,
+    chatDOM
+  );
+}
+
+window.Reveal = Reveal;
 
 Reveal.initialize({
   history: true,
