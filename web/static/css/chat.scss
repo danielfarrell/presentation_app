@@ -74,8 +74,9 @@
     border-bottom: dashed 1px #aaa;
     .message__meta {
       position: relative;
+      margin-bottom: 4px;
       .message__user {
-
+        color: #aaa;
       }
       .message__timestamp {
         position: absolute;
