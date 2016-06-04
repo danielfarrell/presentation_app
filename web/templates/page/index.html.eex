@@ -9,34 +9,44 @@
       </p>
     </section>
     <section>
-      <h2>Who am I?</h2>
-      <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/mobelux-mark.png"), alt: "Mobelux") %></p>
-      <ul>
-        <li>Daniel Farrell</li>
-        <li>Web Development Lead</li>
-        <li><a target="_blank" href="http://mobelux.com/">Mobelux</a> (Product Team for Hire)</li>
-        <li><a target="_blank" href="https://github.com/danielfarrell">@danielfarrell</a></li>
-      </ul>
+      <section>
+        <h2>Who am I?</h2>
+        <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/mobelux-mark.png"), alt: "Mobelux") %></p>
+        <ul>
+          <li>Daniel Farrell</li>
+          <li>Web Development Lead</li>
+          <li><a target="_blank" href="http://mobelux.com/">Mobelux</a> (Product Team for Hire)</li>
+          <li><a target="_blank" href="https://github.com/danielfarrell">@danielfarrell</a></li>
+        </ul>
+      </section>
+      <section>
+        <p class="noframe">
+          <%= tag(:img, src: static_path(@conn, "/images/catatonic.jpg"), alt: "Catatonic", height: 395, width: 375) %>
+        </p>
+      </section>
     </section>
     <section>
-      <h2>“That Elixir Guy”</h2>
-      <p>Spoke about Elixir at:</p>
-      <ul>
-        <li>CVReg(now RefactorRVA)</li>
-        <li>Arlington Ruby</li>
-        <li>757rb</li>
-        <li>Triangle Ruby</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Why Elixir Matters</h2>
-      <ol>
-        <li class="fragment fade-up">Erlang/Beam is amazing technology</li>
-        <li class="fragment fade-up">Functional programming in vogue</li>
-        <li class="fragment fade-up">Distributed/Scalable/Fault tolerant</li>
-        <li class="fragment fade-up">The web is becoming like telecom</li>
-        <li class="fragment fade-up">We are all spoiled from Ruby</li>
-      </ol>
+      <section>
+        <h2>Why Elixir Matters</h2>
+        <ol>
+          <li class="fragment fade-up">Erlang/Beam/OTP is amazing technology</li>
+          <li class="fragment fade-up">Functional programming in vogue</li>
+          <li class="fragment fade-up">Distributed/Scalable/Fault tolerant</li>
+          <li class="fragment fade-up">The web is becoming like telecom</li>
+          <li class="fragment fade-up">We are all spoiled from Ruby</li>
+        </ol>
+      </section>
+      <section>
+        <h3>Erlang/OTP</h3>
+        <ul>
+          <li>Almost an OS</li>
+          <li>Multi-process</li>
+          <li>Actor model</li>
+          <li>Let it crash</li>
+          <li>Distributed</li>
+          <li>Hot code reloading</li>
+        </ul>
+      </section>
     </section>
     <section>
       <section>
@@ -55,31 +65,57 @@
       </section>
     </section>
     <section>
-      <h3>Elixir</h3>
-      <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/elixir-icon.png"), alt: "Elixir", height: 250, width: 250) %></p>
-      <p>Stable and wonderful</p>
-      <aside class="footnotes">
-        Video links:<br />
-        José speaking at Elixirconf.eu: <a href="https://youtu.be/A60nxws_iVs" target="_blank">https://youtu.be/A60nxws_iVs</a><br />
-        Saša speaking at Elixirconf.eu: <a href="https://youtu.be/y_b6RTes83c" target="_blank">https://youtu.be/y_b6RTes83c</a>
-      </aside>
+      <section>
+        <h3>Elixir</h3>
+        <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/elixir-icon.png"), alt: "Elixir", height: 250, width: 250) %></p>
+        <p>Stable and wonderful</p>
+        <aside class="footnotes">
+          Video links:<br />
+          José speaking at Elixirconf.eu: <a href="https://youtu.be/A60nxws_iVs" target="_blank">youtu.be/A60nxws_iVs</a><br />
+          Saša speaking at Elixirconf.eu: <a href="https://youtu.be/y_b6RTes83c" target="_blank">youtu.be/y_b6RTes83c</a>
+        </aside>
+      </section>
+      <section>
+        <h3>Elixir Recent Features</h3>
+        <ul>
+          <li>Calendar data types</li>
+          <li>with (nested data querying)</li>
+        </ul>
+      </section>
     </section>
     <section>
-      <h3>Phoenix</h3>
-      <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/phoenix-icon.png"), alt: "Phoenix", height: 250, width: 250) %></p>
-      <p>Presence</p>
-      <aside class="footnotes">
-        Video Link:<br />
-        Chris speaking at Elixirconf.eu: <a href="https://youtu.be/n338leKvqnA" target="_blank">https://youtu.be/n338leKvqnA</a>
-      </aside>
+      <section>
+        <h3>Phoenix</h3>
+        <p class="noframe"><%= tag(:img, src: static_path(@conn, "/images/phoenix-icon.png"), alt: "Phoenix", height: 250, width: 250) %></p>
+        <p>MVC, Channels, and now Presence</p>
+        <aside class="footnotes">
+          Video Link:<br />
+          Chris speaking at Elixirconf.eu: <a href="https://youtu.be/n338leKvqnA" target="_blank">youtu.be/n338leKvqnA</a>
+        </aside>
+      </section>
+      <section>
+        <h3>2,000,000 Connections</h3>
+        <p>1 server</p>
+        <aside class="footnotes">
+          Video Link:<br />
+          Gary speaking at Elixirconf.eu: <a href="https://youtu.be/c6JcVwbOGXc" target="_blank">youtu.be/c6JcVwbOGXc</a>
+        </aside>
+      </section>
     </section>
     <section>
       <h3>Ecto</h3>
-      <p>Data transformation tool</p>
-      <p>Don't call it a "model"</p>
+      <p>Data/database toolkit</p>
+      <ul>
+        <li>PostgreSQL</li>
+        <li>MySQL</li>
+        <li>SQLite*</li>
+        <li>MongoDB*</li>
+        <li>MSSQL*</li>
+      </ul>
       <aside class="footnotes">
+        * Needs to be updated for Ecto 2 still<br />
         Video link:<br />
-        Michał speaking at Elixirconf.eu: <a href="https://youtu.be/msdYuidWYQA" target="_blank">https://youtu.be/msdYuidWYQA</a>
+        Michał speaking at Elixirconf.eu: <a href="https://youtu.be/msdYuidWYQA" target="_blank">youtu.be/msdYuidWYQA</a>
       </aside>
     </section>
     <section>
@@ -93,7 +129,7 @@
         <p><a target="_blank" href="http://nerves-project.org/">nerves-project.org</a></p>
         <aside class="footnotes">
           Video link:<br />
-          Justin speaking at Elixirconf.eu: <a href="https://youtu.be/g0ODfgg" target="_blank">https://youtu.be/118-g0ODfgg</a>
+          Justin speaking at Elixirconf.eu: <a href="https://youtu.be/g0ODfgg" target="_blank">youtu.be/118-g0ODfgg</a>
         </aside>
       </section>
       <section>
@@ -140,7 +176,7 @@
     </section>
     <section>
       <h3>The State of Elixir/Phoenix</h3>
-      <p>Next Release Cycle: Ready for prime time!</p>
+      <p>This Release Cycle: Ready for prime time!</p>
     </section>
     <section>
       <h3>What Now?</h3>
