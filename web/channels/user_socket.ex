@@ -2,8 +2,8 @@ defmodule PresentationApp.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "rooms:*", PresentationApp.RoomChannel
   channel "presentation", PresentationApp.PresentationChannel
+  channel "chat", PresentationApp.ChatChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

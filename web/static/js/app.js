@@ -1,45 +1,29 @@
 // import 'phoenix_html'
-import Reveal from 'reveal.js';
 import React from 'react';
 import { render } from 'react-dom';
+import { Socket } from 'phoenix';
+import { SocketProvider } from 'redux-channels';
 
-import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import Chat from './containers/Chat';
-import * as slideActions from './actions/slides';
+import presentation from './presentation';
 
 const presenter = window.location.hostname === 'localhost';
 
 const store = configureStore();
+const socket = new Socket('/socket');
+socket.connect();
 
 const chatDOM = document.getElementById('chat');
 
 if (chatDOM) {
   render(
-    <Provider store={store}>
+    <SocketProvider store={store} socket={socket}>
       <Chat />
-    </Provider>,
+    </SocketProvider>,
     chatDOM
   );
 }
 
-window.Reveal = Reveal;
-
-Reveal.initialize({
-  history: true,
-  controls: presenter,
-  keyboard: presenter,
-  touch: presenter
-});
-
-if (presenter) {
-  Reveal.addEventListener('slidechanged', () => {
-    store.dispatch(slideActions.slideTransition(Reveal.getState()));
-  });
-  Reveal.addEventListener('fragmentshown', () => {
-    store.dispatch(slideActions.slideTransition(Reveal.getState()));
-  });
-  Reveal.addEventListener('fragmenthidden', () => {
-    store.dispatch(slideActions.slideTransition(Reveal.getState()));
-  });
-}
+const presentationChannel = socket.channel('presentation');
+presentation(presentationChannel, presenter);

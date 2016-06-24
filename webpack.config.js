@@ -30,7 +30,7 @@ const config = module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.(eot|ttf|woff)$/, loaders: ['file'] },
+      { test: /\.(svg|eot|ttf|woff|woff2)$/, loaders: ['file?name=/fonts/[hash].[ext]'] },
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
       { test: /\.css?$/, loaders: ['style', 'raw'] },
       { test: /\.scss?$/, loader: ExtractTextPlugin.extract('style', 'css!resolve-url!sass') }

@@ -4,7 +4,7 @@ import MessageForm from './MessageForm';
 
 export default class MessageView extends React.Component {
   static propTypes = {
-    messages: PropTypes.array.isRequired,
+    messages: PropTypes.object.isRequired,
     sendMessage: PropTypes.func.isRequired
   };
 

@@ -4,7 +4,7 @@ import Message from './Message';
 
 export default class MessageList extends React.Component {
   static propTypes = {
-    messages: PropTypes.array.isRequired
+    messages: PropTypes.object.isRequired
   };
 
   componentDidMount() {

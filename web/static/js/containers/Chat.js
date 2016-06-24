@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as authActions from '../actions/auth';
-import * as channelActions from '../actions/channel';
-import * as uiActions from '../actions/ui';
+import { connect } from 'redux-channels';
+import { Presence } from 'phoenix';
+import * as allAuthActions from '../actions/auth';
+import * as allChannelActions from '../actions/channel';
+import * as allUiActions from '../actions/ui';
+import * as allUserActions from '../actions/users';
 import Header from '../components/Header';
 import UserView from '../components/UserView';
 import MessageView from '../components/MessageView';
@@ -13,31 +15,48 @@ class Chat extends React.Component {
   static propTypes = {
     auth: PropTypes.string,
     ui: PropTypes.object,
-    connection: PropTypes.object,
-    users: PropTypes.array,
+    messages: PropTypes.object,
+    users: PropTypes.object,
     authActions: PropTypes.object,
     channelActions: PropTypes.object,
-    uiActions: PropTypes.object
+    uiActions: PropTypes.object,
+    userActions: PropTypes.object,
+    chatChannel: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    if (props.auth) {
-      props.channelActions.joinChannel();
-    }
+    const { auth, channelActions, chatChannel, ui } = props;
+    this.chatChannel = chatChannel;
+    this.presences = {};
     this.state = {
-      minimized: props.ui.minimized,
+      minimized: ui.minimized,
       view: 'messages'
     };
     this.login = ::this.login;
+    this.sendMessage = ::this.sendMessage;
     this.handleSelect = ::this.handleSelect;
+    this.userJoin = ::this.userJoin;
+    this.userLeave = ::this.userLeave;
+    this.presenceInitial = ::this.presenceInitial;
+    this.presenceDiff = ::this.presenceDiff;
+    this.receiveMessage = ::this.receiveMessage;
+
+    chatChannel.on('presences', this.presenceInitial);
+    chatChannel.on('presence_diff', this.presenceDiff);
+    chatChannel.on('shout', this.receiveMessage);
+    if (auth) {
+      chatChannel.join()
+      .receive('ok', resp => { channelActions.channelJoinSuccess(chatChannel, resp); })
+      .receive('error', resp => { channelActions.channelJoinFailure(chatChannel, resp); });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     const { auth } = nextProps;
 
     if (!this.props.auth && auth) {
-      nextProps.channelActions.joinChannel();
+      this.chatChannel.join();
     }
   }
 
@@ -45,6 +64,44 @@ class Chat extends React.Component {
     e.preventDefault();
     const username = e.target[0].value;
     this.props.authActions.chooseUsername(username);
+  }
+
+  sendMessage(message) {
+    const { auth } = this.props;
+    this.chatChannel.push('shout', { username: auth, message });
+    // this.forceUpdate();
+  }
+
+  // detect if user has joined for the 1st time or from another tab/device
+  userJoin(id, current, _newPres) {
+    const { userActions } = this.props;
+    if (!current) {
+      userActions.userJoined(id);
+      // this.forceUpdate();
+    }
+  }
+
+  // detect if user has left from all tabs/devices, or is still present
+  userLeave(id, current, _leftPres) {
+    const { userActions } = this.props;
+    if (current.metas.length === 0) {
+      userActions.userLeft(id);
+      // this.forceUpdate();
+    }
+  }
+
+  presenceInitial(source) {
+    Presence.syncState(this.presences, source, this.userJoin, this.userLeave);
+  }
+
+  presenceDiff(diff) {
+    Presence.syncDiff(this.presences, diff, this.userJoin, this.userLeave);
+  }
+
+  receiveMessage(data) {
+    const { channelActions } = this.props;
+    channelActions.receiveData(data);
+    // this.forceUpdate();
   }
 
   handleSelect(action) {
@@ -80,11 +137,11 @@ class Chat extends React.Component {
         <UserView users={users} />
       );
     } else if (this.state.view === 'messages') {
-      const { connection: { messages } } = this.props;
+      const { messages } = this.props;
       return (
         <MessageView
           messages={messages}
-          sendMessage={this.props.channelActions.sendMessage}
+          sendMessage={this.sendMessage}
         />
       );
     }
@@ -92,11 +149,10 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { auth, connection, users } = this.props;
-    const messages = connection.messages;
+    const { auth, messages, users } = this.props;
     const minimized = this.state.minimized;
-    const userCount = users.length;
-    const messageCount = messages.length;
+    const userCount = users.size;
+    const messageCount = messages.size;
     const stateClass = minimized ? 'minimized' : '';
     const viewComponent = this.viewComponent();
 
@@ -123,15 +179,23 @@ class Chat extends React.Component {
   }
 }
 
-const selector = (state) => ({
-  connection: state.connection,
+const mapStateToProps = (state) => ({
+  messages: state.messages,
   ui: state.ui,
   auth: state.auth,
   users: state.users
 });
-const actions = (dispatch) => ({
-  authActions: bindActionCreators(authActions, dispatch),
-  channelActions: bindActionCreators(channelActions, dispatch),
-  uiActions: bindActionCreators(uiActions, dispatch)
+const mapDispatchToProps = (dispatch) => ({
+  authActions: bindActionCreators(allAuthActions, dispatch),
+  channelActions: bindActionCreators(allChannelActions, dispatch),
+  uiActions: bindActionCreators(allUiActions, dispatch),
+  userActions: bindActionCreators(allUserActions, dispatch)
 });
-export default connect(selector, actions)(Chat);
+const mapSocketToProps = ({ socket, state }) => ({
+  chatChannel: socket.channel('chat', { username: state.auth })
+});
+export default connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  mapSocketToProps
+})(Chat);

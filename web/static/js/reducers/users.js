@@ -1,22 +1,19 @@
+import { List } from 'immutable';
 import {
   USER_JOINED, USER_LEFT
 } from '../constants/users';
 
-const initialState = [];
+const initialState = List();
 
 export default function channel(state = initialState, action) {
   switch (action.type) {
     case USER_JOINED: {
-      const users = JSON.parse(JSON.stringify(state));
-      users.push(action.payload.username);
-      return users;
+      return state.push(action.payload.username);
     }
 
     case USER_LEFT: {
-      const users = JSON.parse(JSON.stringify(state));
-      const userIdx = users.indexOf(action.payload.username);
-      users.splice(userIdx, 1);
-      return users;
+      const userIdx = state.indexOf(action.payload.username);
+      return state.splice(userIdx, 1);
     }
 
     default:

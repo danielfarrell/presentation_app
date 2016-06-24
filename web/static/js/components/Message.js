@@ -11,16 +11,16 @@ export default class Message extends React.Component {
 
   render() {
     const { message } = this.props;
-    const timestamp = moment(message.timestamp).format('h:mm:ssa');
+    const timestamp = moment(message.get('timestamp')).format('h:mm:ssa');
 
     return (
       <li className="message">
         <section className="message__meta">
-          <span className="message__user">{message.username}</span>
+          <span className="message__user">{message.get('username')}</span>
           <span className="message__timestamp">{timestamp}</span>
         </section>
         <section className="message__content">
-          {message.message}
+          {message.get('message')}
         </section>
       </li>
     );
